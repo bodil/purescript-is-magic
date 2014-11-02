@@ -109,12 +109,12 @@ hated hater p _ | intersects hater p =
 hated _ p cont = cont p
 
 pinkieLogic :: (Tuple Boolean GameObject) -> GameObject -> GameObject
-pinkieLogic (Tuple spaceBar hater) p =
+pinkieLogic (Tuple jumpPressed hater) p =
   hated hater p
   (solidGround
    <<< gravity
    <<< velocity
-   <<< jump spaceBar
+   <<< jump jumpPressed
    <<< clearSound)
 
 pinkie :: Signal (Tuple Boolean GameObject) -> Signal GameObject
@@ -143,7 +143,8 @@ main :: Eff (dom :: DOM, sound :: Sound) Unit
 main = do
   play $ RepeatSound "sfx/smile.ogg" 0.3
   spaceBar <- keyPressed 32
-  let pinkie' = pinkie $ zip spaceBar hater
+  taps <- tap
+  let pinkie' = pinkie $ zip (spaceBar <> taps) hater
       scene = ground <> hater <> pinkie' <> coin pinkie'
   runSignal $ scene ~> renderObject
   runSignal $ scene ~> playSound

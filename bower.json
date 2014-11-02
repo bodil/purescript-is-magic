@@ -11,6 +11,6 @@
     "output"
   ],
   "dependencies": {
-    "purescript-signal": "~1.1.0"
+    "purescript-signal": "~1.2.0"
   }
 }
