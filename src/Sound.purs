@@ -28,7 +28,7 @@ foreign import play """
           el.addEventListener("ended", function(e) {
             active = active.filter(function(i) { return i !== e.target });
           });
-          if (o instanceof RepeatSound) el.loop = true;
+          el.loop = (o instanceof RepeatSound);
           active.push(el);
         }
       };
