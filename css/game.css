@@ -1,0 +1,82 @@
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 512px;
+    height: 512px;
+    background: url(../gfx/clouds.png);
+    background-size: cover;
+    overflow: hidden;
+    -moz-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+#logo {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    width: 140px;
+    height: 171px;
+    background: url(../gfx/logo.png);
+    background-size: cover;
+    z-index: 100;
+}
+
+#pinkie {
+    position: absolute;
+    width: 140px;
+    height: 126px;
+    top: -128px;
+    left: 64px;
+    background: url(../gfx/pie-dash.gif);
+}
+
+#pinkie.jumping {
+    background: url(../gfx/pie-jump.gif) !important;
+}
+
+#pinkie.gameover {
+    background: url(../gfx/pie-oops.gif) !important;
+}
+
+#ground {
+    position: absolute;
+    width: 3840px;
+    height: 256px;
+    top: 384px;
+    left: -128px;
+    background: url(../gfx/map.png);
+    z-index: -1;
+}
+
+#hater {
+    position: absolute;
+    width: 150px;
+    height: 113px;
+    left: -512px;
+    background: url(../gfx/trollface.gif);
+}
+
+#coin {
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    left: -512px;
+    background: url(../gfx/coin.gif);
+}
