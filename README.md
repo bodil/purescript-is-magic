@@ -16,6 +16,10 @@ $ npm start
 
 The game will now be running on <http://localhost:1337/>.
 
+## Play Online
+
+<http://bodil.org/purescript-is-magic/>
+
 ## License
 
 Copyright (C) Bodil Stokke
