@@ -16,10 +16,10 @@ type GameObject =
   , sound :: SoundEffect }
 
 type Bounds = { x1 :: Number, x2 :: Number, y1 :: Number, y2 :: Number }
-bounds :: forall a. GameObject -> Bounds
+bounds :: GameObject -> Bounds
 bounds a = { x1: a.x + a.baseX, y1: a.y + a.baseY
            , x2: a.x + a.baseX + 64, y2: a.y + a.baseY + 64 }
-intersects :: forall a b. GameObject -> GameObject -> Boolean
+intersects :: GameObject -> GameObject -> Boolean
 intersects a b = not ((b'.x1 > a'.x2) || (b'.x2 < a'.x1)
                    || (b'.y1 > a'.y2) || (b'.y2 < a'.y1))
   where a' = bounds a
