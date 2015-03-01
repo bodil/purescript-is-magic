@@ -42,7 +42,7 @@ initialPinkie =
   , x: 0, y: 0
   , baseX: 0, baseY: 276
   , vx: 0, vy: 0
-  , sound: RepeatSound "sfx/smile.ogg" 0.3 }
+  , sound: Quiet }
 
 initialCoin :: GameObject
 initialCoin =
@@ -144,7 +144,7 @@ main = do
   play $ RepeatSound "sfx/smile.ogg" 0.3
   spaceBar <- keyPressed 32
   taps <- tap
-  let pinkie' = pinkie $ zip (spaceBar <> taps) hater
+  let pinkie' = pinkie $ zip Tuple (spaceBar <> taps) hater
       scene = ground <> hater <> pinkie' <> coin pinkie'
   runSignal $ scene ~> renderObject
   runSignal $ scene ~> playSound
