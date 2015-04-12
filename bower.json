@@ -11,6 +11,7 @@
     "output"
   ],
   "dependencies": {
-    "purescript-signal": "~2.2.1"
+    "purescript-signal": "~2.2.1",
+    "purescript-tuples": "~0.3.4"
   }
 }
