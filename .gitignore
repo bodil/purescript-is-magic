@@ -2,3 +2,5 @@
 /index.js
 /node_modules/
 /output/
+/.psci*
+/src/.webpack.js

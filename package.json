@@ -4,11 +4,10 @@
   "description": "My Little Pony: PureScript is Magic",
   "license": "GPL-3.0+",
   "scripts": {
-    "install": "pulp install",
-    "start": "pulp browserify --to index.js -w & lserver -p 1337 -f index.html"
+    "install": "pulp dep install",
+    "start": "pulp server --no-info"
   },
   "devDependencies": {
-    "local-server": "^0.1.8",
-    "pulp": "^1.5.0"
+    "pulp": "^4.4.0"
   }
 }
