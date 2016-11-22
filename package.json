@@ -8,6 +8,7 @@
     "start": "pulp server --no-info"
   },
   "devDependencies": {
-    "pulp": "^4.4.0"
+    "pulp": "^4.4.0",
+    "purescript": "^0.7.0"
   }
 }
