@@ -6,8 +6,7 @@ A simple example of how to build a game using
 
 ## Usage
 
-Assuming you have [Node](http://nodejs.org/) and
-[PureScript](http://purescript.org/) already installed:
+Assuming you have [Node](http://nodejs.org/) already installed:
 
 ```sh
 $ npm install
