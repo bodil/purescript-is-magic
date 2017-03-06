@@ -11,6 +11,7 @@ Assuming you have [Node](http://nodejs.org/) and
 
 ```sh
 $ npm install
+$ bower install
 $ npm start
 ```
 
