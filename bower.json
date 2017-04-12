@@ -11,11 +11,11 @@
     "output"
   ],
   "dependencies": {
-    "purescript-prelude": "~0.1.2",
-    "purescript-signal": "~4.1.0",
-    "purescript-tuples": "~0.4.0",
-    "purescript-console": "~0.1.0",
-    "purescript-integers": "~0.2.1",
-    "purescript-math": "~0.2.0"
+    "purescript-prelude": "~3.0.0",
+    "purescript-signal": "~9.0.0",
+    "purescript-tuples": "~4.0.0",
+    "purescript-console": "~3.0.0",
+    "purescript-integers": "~3.0.0",
+    "purescript-math": "~2.0.0"
   }
 }

@@ -1,16 +1,16 @@
 module Main where
 
-import Control.Monad.Eff
-import qualified Data.Int as Int
-import qualified Data.Maybe as Maybe
-import Data.Tuple(Tuple(..))
-import DOM
-import qualified Math as Math
 import Prelude
-import Signal
-import Signal.Time
-import Signal.DOM
-import Sound
+import Control.Monad.Eff (Eff)
+import Data.Int as Int
+import Data.Maybe as Maybe
+import Data.Tuple(Tuple(..))
+import DOM (DOM)
+import Math as Math
+import Signal (Signal, foldp, runSignal, sampleOn, (<~), (~), (~>))
+import Signal.Time (Time, every)
+import Signal.DOM (keyPressed, tap)
+import Sound (SOUND, SoundEffect(..), play)
 
 type GameObject =
   { id :: String, css :: String
@@ -78,8 +78,8 @@ reset i o | (o.x + o.baseX) < -100.0
          || (o.y + o.baseY) > 3000.0 = i
 reset _ o = o
 
-playSound :: forall e. GameObject -> Eff (sound :: Sound | e) Unit
-playSound { sound = sound } = play sound
+playSound :: forall e. GameObject -> Eff (sound :: SOUND | e) Unit
+playSound { sound } = play sound
 
 clearSound :: GameObject -> GameObject
 clearSound o = o { sound = Quiet }
@@ -89,7 +89,8 @@ gravity o = o { vy = o.vy + 0.98 }
 
 velocity :: GameObject -> GameObject
 velocity o = o { x = o.x + o.vx
-                       , y = o.y + o.vy }
+               , y = o.y + o.vy
+               }
 
 solidGround :: GameObject -> GameObject
 solidGround o =
@@ -98,11 +99,11 @@ solidGround o =
   else o
 
 jump :: Boolean -> GameObject -> GameObject
-jump true p@{ y = 0.0 } = p { vy = -20.0, css = "jumping", sound = Sound "sfx/jump.ogg" 1.0 }
+jump true p@{ y: 0.0 } = p { vy = -20.0, css = "jumping", sound = Sound "sfx/jump.ogg" 1.0 }
 jump _ p = p
 
 hated :: GameObject -> GameObject -> (GameObject -> GameObject) -> GameObject
-hated _ p@{ css = "gameover" } _ =
+hated _ p@{ css: "gameover" } _ =
   reset initialPinkie $ clearSound $ velocity $ p { vy = p.vy + 0.5 }
 hated h p _ | intersects h p =
   velocity $ p { css = "gameover", vy = -15.0, sound = ExclusiveSound "sfx/gameover.ogg" 1.0 }
@@ -139,7 +140,7 @@ coinLogic p c =
 coin :: Signal GameObject -> Signal GameObject
 coin = foldp coinLogic initialCoin
 
-main :: Eff (dom :: DOM, sound :: Sound) Unit
+main :: Eff (dom :: DOM, sound :: SOUND) Unit
 main = do
   play $ RepeatSound "sfx/smile.ogg" 0.3
   spaceBar <- keyPressed 32

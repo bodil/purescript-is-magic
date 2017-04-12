@@ -5,9 +5,9 @@
   "license": "GPL-3.0+",
   "scripts": {
     "install": "pulp dep install",
-    "start": "pulp server --no-info"
+    "start": "pulp server"
   },
   "devDependencies": {
-    "pulp": "^4.4.0"
+    "pulp": "^11.0.0"
   }
 }
